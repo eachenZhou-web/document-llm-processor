@@ -1,0 +1,15 @@
+# 可选依赖 - 仅在需要时安装
+# 这些包需要编译，可能在 Windows 上安装困难
+
+# PDF 高级解析（可选，不安装也能用 PyPDF2）
+pdfplumber==0.10.3
+
+# 图片处理和 OCR（可选，仅在需要图片文字识别时安装）
+Pillow==10.1.0
+pytesseract==0.3.10
+
+# Windows 文件类型检测（可选）
+python-magic-bin==0.4.14
+
+# 网页高级抓取（可选，仅在有 API Key 时需要）
+firecrawl-py==0.0.5
