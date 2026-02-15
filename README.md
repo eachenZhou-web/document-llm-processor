@@ -176,3 +176,219 @@ MIT License
 ## 贡献
 
 欢迎提交 Issue 和 Pull Request！
+
+---
+
+Here is the English translation of my document.
+
+---
+
+# LLM Document Processing System
+
+A powerful Web application that supports uploading various formats of documents, images, and web links for intelligent analysis using Large Language Models (LLMs).
+
+## Features
+
+### 📤 Part 1: Document Processing
+
+* **Document Upload**: Supports PDF, Word (docx/doc), and text files.
+* **Image Recognition**: Supports PNG, JPG, JPEG, GIF, and BMP; uses OCR to extract text.
+* **Web Scraping**: Supports multiple web links with automatic content extraction.
+* Optional use of Firecrawl API for advanced scraping.
+* Built-in simple scraper as a fallback solution.
+
+
+* **Batch Processing**: Supports simultaneous processing of multiple documents, images, and links.
+* **Text Integration**: Automatically merges all extracted content into a single text body.
+
+### 🤖 Part 2: LLM Analysis
+
+* **Multi-Model Support**:
+* OpenAI GPT series (GPT-4, GPT-3.5)
+* Anthropic Claude series
+* Custom API (OpenAI-compatible format)
+
+
+* **Custom Prompts**: Full control over the analysis methodology.
+* **Real-time Analysis**: Get AI analysis results quickly.
+
+## Installation Steps
+
+### 1. Prerequisites
+
+* Python 3.8+
+* Tesseract OCR (for image text recognition)
+
+### 2. Install Tesseract OCR
+
+#### Windows
+
+1. Download the installer: [https://github.com/UB-Mannheim/tesseract/wiki](https://github.com/UB-Mannheim/tesseract/wiki)
+2. Install to the default or a custom path.
+3. If using a custom path, configure it in `utils/document_processor.py`:
+```python
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
+```
+
+
+
+#### macOS
+
+```bash
+brew install tesseract tesseract-lang
+
+```
+
+#### Linux
+
+```bash
+sudo apt-get install tesseract-ocr tesseract-ocr-chi-sim
+
+```
+
+### 3. Install Python Dependencies
+
+```bash
+cd document-llm-processor
+pip install -r requirements.txt
+
+```
+
+### 4. (Optional) Configure Firecrawl API
+
+To use Firecrawl for advanced web scraping:
+
+```bash
+# Windows
+set FIRECRAWL_API_KEY=your_api_key_here
+
+# macOS/Linux
+export FIRECRAWL_API_KEY=your_api_key_here
+
+```
+
+## Usage
+
+### 1. Start the Server
+
+```bash
+python app.py
+
+```
+
+The server will start at `http://localhost:5000`
+
+### 2. Access the Web Interface
+
+Open your browser and go to: `http://localhost:5000`
+
+### 3. Workflow
+
+#### Step 1: Upload Content
+
+1. **Upload Files**: Click or drag files to the upload area.
+2. **Input Text**: Paste text content directly.
+3. **Add Links**: Enter one web link per line (multiple supported).
+4. Click "Start Processing Documents."
+
+#### Step 2: LLM Analysis
+
+1. Select a Model Provider (OpenAI / Anthropic / Custom).
+2. Select the specific Model.
+3. Enter your API Key.
+4. Write your analysis prompt.
+5. Click "Start AI Analysis."
+
+## Configuration Details
+
+### Supported File Formats
+
+* **Documents**: .txt, .pdf, .docx, .doc
+* **Images**: .png, .jpg, .jpeg, .gif, .bmp
+* **Maximum File Size**: 50MB
+
+### LLM Configuration
+
+#### OpenAI
+
+* Requires API Key.
+* Supported models: GPT-4, GPT-3.5-turbo, etc.
+* Supports optional custom API Base URL.
+
+#### Anthropic
+
+* Requires API Key.
+* Supported models: Claude Opus 4.6, Claude Sonnet 4.5, etc.
+
+#### Custom API
+
+* Requires API Base URL.
+* Must be compatible with the OpenAI API format.
+
+## Project Structure
+
+```
+document-llm-processor/
+├── app.py                      # Main Flask application
+├── requirements.txt            # Python dependencies
+├── utils/                      # Utility modules
+│   ├── __init__.py
+│   ├── document_processor.py   # Document processing logic
+│   └── llm_handler.py          # LLM handling logic
+├── templates/                  # HTML templates
+│   └── index.html
+├── static/                     # Static assets
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── main.js
+└── uploads/                    # Temporary upload directory
+
+```
+
+## FAQ
+
+### 1. Image OCR Recognition Failed
+
+* Ensure Tesseract OCR is installed.
+* Check if the Tesseract path configuration is correct.
+* For Chinese recognition, ensure the Chinese language pack is installed.
+
+### 2. Web Scraping Failed
+
+* Some websites may have anti-scraping mechanisms.
+* Configuring a Firecrawl API Key is recommended to improve the success rate.
+* Ensure your network connection is stable.
+
+### 3. LLM API Call Failed
+
+* Check if the API Key is correct.
+* Confirm your account balance is sufficient.
+* Check your network connection and API Base URL.
+
+## Security Tips
+
+* API Keys are only stored temporarily in the browser and are not saved to the server.
+* Uploaded files are deleted immediately after processing.
+* It is recommended to run this application in a local or trusted environment.
+
+## Tech Stack
+
+* **Backend**: Flask, Python
+* **Frontend**: HTML5, CSS3, JavaScript
+* **Document Processing**: PyPDF2, python-docx, pytesseract
+* **Web Scraping**: BeautifulSoup, Firecrawl
+* **LLM**: OpenAI API, Anthropic API
+
+## License
+
+MIT License
+
+## Contribution
+
+Issues and Pull Requests are welcome!
+
+---
+
+Would you like me to adjust any specific terminology (e.g., more formal or more technical) for this translation?
